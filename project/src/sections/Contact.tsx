@@ -1,7 +1,7 @@
-import React, { useEffect, useRef } from 'react';
-import { SectionTitle } from '../components/SectionTitle';
-import { ContactForm } from '../components/ContactForm';
 import { Mail, MapPin, Phone } from 'lucide-react';
+import React, { useEffect, useRef } from 'react';
+import { ContactForm } from '../components/ContactForm';
+import { SectionTitle } from '../components/SectionTitle';
 
 export const Contact: React.FC = () => {
   const formRef = useRef<HTMLDivElement>(null);
@@ -85,7 +85,7 @@ export const Contact: React.FC = () => {
                     </div>
                     <div>
                       <h4 className="font-medium text-gray-800">Phone</h4>
-                      <p className="text-gray-600">+94 11 754 3202</p>
+                      <p className="text-gray-600">+94 75 6095 000</p>
                     </div>
                   </div>
                   

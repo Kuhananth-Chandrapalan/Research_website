@@ -58,8 +58,8 @@ export const Navbar: React.FC = () => {
                 'home',
                 'domain',
                 'milestones',
-                'documents',
                 'presentations',
+                'documents',
                 'about',
                 'contact'
               ].map((section) => (
@@ -93,8 +93,8 @@ export const Navbar: React.FC = () => {
               'home',
               'domain',
               'milestones',
-              'documents',
               'presentations',
+              'documents',
               'about',
               'contact'
             ].map((section) => (

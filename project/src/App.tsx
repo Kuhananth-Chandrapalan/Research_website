@@ -1,13 +1,12 @@
-import React from 'react';
-import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
-import { Home } from './sections/Home';
-import { Domain } from './sections/Domain';
-import { Milestones } from './sections/Milestones';
-import { Documents } from './sections/Documents';
-import { Presentations } from './sections/Presentations';
+import { Navbar } from './components/Navbar';
 import { AboutUs } from './sections/AboutUs';
 import { Contact } from './sections/Contact';
+import { Documents } from './sections/Documents';
+import { Domain } from './sections/Domain';
+import { Home } from './sections/Home';
+import { Milestones } from './sections/Milestones';
+import { Presentations } from './sections/Presentations';
 
 function App() {
   return (
@@ -17,8 +16,8 @@ function App() {
         <Home />
         <Domain />
         <Milestones />
-        <Documents />
         <Presentations />
+        <Documents />
         <AboutUs />
         <Contact />
       </main>
