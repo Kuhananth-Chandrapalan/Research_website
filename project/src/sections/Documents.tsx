@@ -16,10 +16,11 @@ export const Documents: React.FC = () => {
             <h3 className="text-xl font-semibold text-blue-700 mb-4">Proposal Reports</h3>
             <div className="space-y-3 text-sm text-gray-700">
               {[
+                { name: "Accepted Main Proposal Report", it: "TAF_24-25J-206", file: "TAF_24-25J-206.pdf" },
                 { name: "Dissanayake D.J.R", it: "IT21313370", file: "24-25J-206_IT21313370_Project_Proposal_Dissanayake D.J.R.pdf" },
                 { name: "Kuhananth C", it: "IT21332244", file: "24-25J-206_IT21332244_Project_Proposal_Kuhananth C.pdf" },
-                { name: "Sulakkana H.D.S.R", it: "IT21224348", file: "IT21224348 - Project Proposal Report.pdf" },
-                { name: "Rizmaan M.F.M", it: "IT21295188", file: "IT21295188_24-25J-206_Proposal_Report.pdf" }
+                { name: "Sulakkana H.D.S.R", it: "IT21224348", file: "24-25J-206_IT21224348_Project Proposal_Sulakkana H.D.S.pdf" },
+                { name: "Rizmaan M.F.M", it: "IT21295188", file: "24-25J-206_IT21295188_Proposal_Report_Rizmaan M.F.M.pdf" }
               ].map(({ name, it, file }) => (
                 <div key={name} className="flex justify-between items-center">
                   <div className="flex items-center min-w-[280px]">

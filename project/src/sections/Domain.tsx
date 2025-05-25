@@ -1,4 +1,6 @@
 import {
+  ArrowLeft,
+  ArrowRight,
   CircuitBoard,
   Code,
   Cpu,
@@ -13,6 +15,33 @@ import { SectionTitle } from '../components/SectionTitle';
 
 export const Domain: React.FC = () => {
   const elementsRef = useRef<(HTMLDivElement | null)[]>([]);
+
+  // Carousel state for Main Components (excluding Introduction)
+  const componentSlides = [
+    {
+      icon: <Cpu size={24} className="text-blue-700" />, 
+      title: 'Vehicle Behavior Detection',
+      content: 'Modern object detection models such as YOLOv8 provide high-speed and accurate identification of vehicles in live video streams. These models, when combined with object tracking algorithms like SORT and Kalman filters, enable reliable tracking across frames. Hybrid detection systems use CNN-LSTM or HMMs to analyze temporal vehicle behaviors, such as sudden stops or unsafe lane changes, making them effective for critical event prediction.'
+    },
+    {
+      icon: <Cpu size={24} className="text-blue-700" />, 
+      title: 'Red-Light Violation and Pothole Detection',
+      content: 'Rule violation systems monitor the position of vehicles relative to traffic signals using line-crossing logic, frame differencing, and traffic signal state detection via semantic segmentation. Pothole detection uses edge-based texture mapping, Gaussian filtering, and GPS metadata integration to notify road authorities in real time about hazardous infrastructure conditions.'
+    },
+    {
+      icon: <Cpu size={24} className="text-blue-700" />, 
+      title: 'Pedestrian Intention Recognition',
+      content: 'Accurate pedestrian intent prediction is critical at urban intersections. Pose estimation models like OpenPose or BlazePose track limb movements and body posture. These keypoints are evaluated with CNNs and LSTMs to detect crossing behavior, while Time-to-Collision (TTC) values offer real-time threat assessment. TTC thresholds help in triggering early warnings to prevent accidents.'
+    },
+    {
+      icon: <Database size={24} className="text-blue-700" />, 
+      title: 'Blockchain for Data Security',
+      content: 'Blockchain technologies offer decentralized and tamper-proof solutions for traffic event logging. Platforms like Ethereum support smart contracts to automate violation validation and penalties. Due to high storage costs, logs are compressed (e.g., using BZ2) and encoded (e.g., Base64) before being written to the chain. This ensures secure, auditable, and efficient traffic data storage.'
+    },
+  ];
+  const [currentComponent, setCurrentComponent] = React.useState(0);
+  const goToPrevComponent = () => setCurrentComponent((prev) => (prev === 0 ? componentSlides.length - 1 : prev - 1));
+  const goToNextComponent = () => setCurrentComponent((prev) => (prev === componentSlides.length - 1 ? 0 : prev + 1));
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -42,62 +71,78 @@ export const Domain: React.FC = () => {
   }, []);
 
   return (
-    <section id="domain" className="py-20 bg-gray-50">
+    <section id="domain" className="py-20 bg-gradient-to-b from-blue-50 via-white to-blue-50 min-h-screen">
       <div className="container mx-auto px-4">
         <SectionTitle 
           title="Research Domain" 
           subtitle="Understanding the integration of deep learning and blockchain for traffic anomaly detection"
         />
-        
-        <div 
-          ref={(el) => (elementsRef.current[0] = el)}
-          className="mb-16 transition-all duration-700 opacity-0 translate-y-10"
-        >
-          <h3 className="text-2xl font-bold text-gray-800 mb-6">Literature Review</h3>
-          <div className="bg-white p-6 rounded-lg shadow-md space-y-5 text-gray-700 leading-relaxed">
+        <div ref={(el) => (elementsRef.current[0] = el)} className="mb-20 flex flex-col items-center w-full">
+          <h3 className="text-3xl font-extrabold text-blue-900 mb-2 tracking-tight text-center">
+            Literature Review
+          </h3>
+          <div className="w-16 h-1 bg-blue-500 rounded-full mb-8"></div>
 
-            <div>
-              <h4 className="text-lg font-semibold text-blue-800 mb-2">1. Introduction</h4>
-              <p>
+          {/* Fixed Introduction Card */}
+          <div className="w-full mb-10 flex justify-center">
+            <div className="bg-white p-8 rounded-2xl shadow-xl border border-blue-100 min-h-[140px] w-full flex flex-col items-start animate-fade-in">
+              <div className="flex items-center mb-3">
+                <span className="bg-blue-100 p-3 rounded-full mr-4">
+                  <Microscope size={28} className="text-blue-700" />
+                </span>
+                <h4 className="text-2xl font-bold text-blue-800">Introduction</h4>
+              </div>
+              <p className="text-gray-700 text-base leading-relaxed">
                 Intelligent Transportation Systems (ITS) have rapidly evolved with the integration of artificial intelligence and computer vision. Real-time traffic anomaly detection plays a pivotal role in road safety, vehicle behavior analysis, and regulatory compliance. This review explores the contributions of modern deep learning models and blockchain systems toward building secure, scalable, and autonomous traffic management solutions.
               </p>
             </div>
+          </div>
 
-            <div>
-              <h4 className="text-lg font-semibold text-blue-800 mb-2">2. Vehicle Behavior Detection</h4>
-              <p>
-                Modern object detection models such as YOLOv8 provide high-speed and accurate identification of vehicles in live video streams. These models, when combined with object tracking algorithms like SORT and Kalman filters, enable reliable tracking across frames. Hybrid detection systems use CNN-LSTM or HMMs to analyze temporal vehicle behaviors, such as sudden stops or unsafe lane changes, making them effective for critical event prediction.
-              </p>
+          {/* Main Components Carousel */}
+          <div className="relative w-full flex flex-col items-center">
+            <div className="flex items-center justify-between w-full">
+              <button
+                onClick={goToPrevComponent}
+                className="p-3 rounded-full bg-blue-100 hover:bg-blue-200 shadow transition-colors"
+                aria-label="Previous"
+              >
+                <ArrowLeft className="text-blue-700" size={28} />
+              </button>
+              <div className="flex-1 mx-6">
+                <div className="bg-white p-8 rounded-2xl shadow-xl border border-blue-100 min-h-[140px] w-full flex flex-col items-start justify-between transition-all duration-500 animate-fade-in hover:scale-[1.02]">
+                  <div className="flex items-center mb-3">
+                    <span className="bg-blue-100 p-3 rounded-full mr-4">
+                      {componentSlides[currentComponent].icon}
+                    </span>
+                    <h4 className="text-2xl font-bold text-blue-800">
+                      {componentSlides[currentComponent].title}
+                    </h4>
+                  </div>
+                  <p className="text-gray-700 text-base leading-relaxed">
+                    {componentSlides[currentComponent].content}
+                  </p>
+                </div>
+              </div>
+              <button
+                onClick={goToNextComponent}
+                className="p-3 rounded-full bg-blue-100 hover:bg-blue-200 shadow transition-colors"
+                aria-label="Next"
+              >
+                <ArrowRight className="text-blue-700" size={28} />
+              </button>
             </div>
-
-            <div>
-              <h4 className="text-lg font-semibold text-blue-800 mb-2">3. Red-Light Violation and Pothole Detection</h4>
-              <p>
-                Rule violation systems monitor the position of vehicles relative to traffic signals using line-crossing logic, frame differencing, and traffic signal state detection via semantic segmentation. Pothole detection uses edge-based texture mapping, Gaussian filtering, and GPS metadata integration to notify road authorities in real time about hazardous infrastructure conditions.
-              </p>
+            <div className="flex justify-center mt-4 gap-2">
+              {componentSlides.map((_, idx) => (
+                <button
+                  key={idx}
+                  className={`w-3 h-3 rounded-full transition-all duration-200 ${
+                    idx === currentComponent ? 'bg-blue-700' : 'bg-blue-200'
+                  }`}
+                  onClick={() => setCurrentComponent(idx)}
+                  aria-label={`Go to slide ${idx + 1}`}
+                />
+              ))}
             </div>
-
-            <div>
-              <h4 className="text-lg font-semibold text-blue-800 mb-2">4. Pedestrian Intention Recognition</h4>
-              <p>
-                Accurate pedestrian intent prediction is critical at urban intersections. Pose estimation models like OpenPose or BlazePose track limb movements and body posture. These keypoints are evaluated with CNNs and LSTMs to detect crossing behavior, while Time-to-Collision (TTC) values offer real-time threat assessment. TTC thresholds help in triggering early warnings to prevent accidents.
-              </p>
-            </div>
-
-            <div>
-              <h4 className="text-lg font-semibold text-blue-800 mb-2">5. Blockchain for Data Security</h4>
-              <p>
-                Blockchain technologies offer decentralized and tamper-proof solutions for traffic event logging. Platforms like Ethereum support smart contracts to automate violation validation and penalties. Due to high storage costs, logs are compressed (e.g., using BZ2) and encoded (e.g., Base64) before being written to the chain. This ensures secure, auditable, and efficient traffic data storage.
-              </p>
-            </div>
-
-            <div>
-              <h4 className="text-lg font-semibold text-blue-800 mb-2">6. Edge Deployment Challenges</h4>
-              <p>
-                Real-time ITS applications demand fast model inference and low-latency operations. Frameworks like TensorRT, ONNX Runtime, and quantized models allow deployment on resource-constrained devices such as Jetson Nano. The system must sustain at least 10 FPS and trigger responses under 100ms latency while maintaining lightweight blockchain transactions.
-              </p>
-            </div>
-
           </div>
         </div>
         

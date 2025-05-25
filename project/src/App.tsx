@@ -16,8 +16,8 @@ function App() {
         <Home />
         <Domain />
         <Milestones />
-        <Presentations />
         <Documents />
+        <Presentations />
         <AboutUs />
         <Contact />
       </main>

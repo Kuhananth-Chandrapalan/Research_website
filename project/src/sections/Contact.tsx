@@ -49,18 +49,11 @@ export const Contact: React.FC = () => {
     <section id="contact" className="py-20 bg-white">
       <div className="container mx-auto px-4">
         <SectionTitle 
-          title="Contact Us" 
-          subtitle="Have questions about our research? Get in touch with our team"
+          title="Get in Touch" 
+          subtitle="Find our contact details below and reach out to us"
         />
         
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          <div 
-            ref={formRef}
-            className="transition-all duration-700 opacity-0 translate-y-10"
-          >
-            <ContactForm />
-          </div>
-          
           <div 
             ref={infoRef}
             className="transition-all duration-700 opacity-0 translate-y-10"
@@ -118,6 +111,13 @@ export const Contact: React.FC = () => {
                 ></iframe>
               </div>
             </div>
+          </div>
+
+          <div 
+            ref={formRef}
+            className="transition-all duration-700 opacity-0 translate-y-10"
+          >
+            <ContactForm />
           </div>
         </div>
       </div>
