@@ -44,7 +44,7 @@ export const Navbar: React.FC = () => {
               className="h-8 w-auto"
             />
             <div className="flex flex-col">
-              <span className="text-xl font-bold text-black">Eagle Eye</span>
+              <span className={`text-xl font-bold ${isScrolled ? 'text-black' : 'text-white'}`}>Eagle Eye</span>
               <span className="hidden md:inline-block text-sm font-medium text-gray-600">
                 Research Project 24-25J-206
               </span>
@@ -66,7 +66,7 @@ export const Navbar: React.FC = () => {
                 <li key={section}>
                   <button
                     onClick={() => scrollToSection(section)}
-                    className="text-gray-700 hover:text-blue-800 font-medium transition-colors capitalize"
+                    className={`font-medium transition-colors capitalize ${isScrolled ? 'text-gray-700 hover:text-blue-800' : 'text-white hover:text-blue-200'}`}
                   >
                     {section.replace(/^\w/, (c) => c.toUpperCase())}
                   </button>
@@ -101,7 +101,7 @@ export const Navbar: React.FC = () => {
               <li className="py-2" key={section}>
                 <button
                   onClick={() => scrollToSection(section)}
-                  className="text-gray-700 hover:text-blue-800 font-medium transition-colors w-full text-left capitalize"
+                  className={`font-medium transition-colors w-full text-left capitalize ${isScrolled ? 'text-gray-700 hover:text-blue-800' : 'text-white hover:text-blue-200'}`}
                 >
                   {section.replace(/^\w/, (c) => c.toUpperCase())}
                 </button>
