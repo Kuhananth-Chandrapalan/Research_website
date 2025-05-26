@@ -6,6 +6,7 @@ interface PresentationCardProps {
   date: string;
   type: string;
   downloadUrl: string;
+  previewComponent?: React.ReactNode;  // Added previewComponent prop
 }
 
 export const PresentationCard: React.FC<PresentationCardProps> = ({
@@ -13,6 +14,7 @@ export const PresentationCard: React.FC<PresentationCardProps> = ({
   date,
   type,
   downloadUrl,
+  previewComponent,  // Destructure the previewComponent
 }) => {
   const handleDownload = (e: React.MouseEvent<HTMLAnchorElement>) => {
     if (downloadUrl === '#') {
@@ -34,6 +36,11 @@ export const PresentationCard: React.FC<PresentationCardProps> = ({
           </p>
         </div>
       </div>
+
+      {/* Render previewComponent if provided */}
+      {previewComponent ? (
+        <div className="mb-4">{previewComponent}</div>
+      ) : null}
 
       <a
         href={downloadUrl}

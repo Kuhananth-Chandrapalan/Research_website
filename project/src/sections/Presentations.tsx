@@ -36,6 +36,7 @@ export const Presentations: React.FC = () => {
     proposal: '1ARlPYe_F6fZATEvkCNHf_psddbgFaOAp',
     progress1: '1WFqz9ax5xrW7rxcWUIEVdaU2sFI6cYlO',
     progress2: '14y-bA8uqNrzAwcsYVfqG4dV2B7P6AvXC',
+    finalviva: '16Jbb7lN6edefBa8lym8Uwv3o7EG6F7IS',
   };
 
   // Build Google Drive direct download URL
@@ -79,7 +80,7 @@ export const Presentations: React.FC = () => {
             title="Final Viva Slides"
             date="May 2025"
             type="PowerPoint"
-            downloadUrl="#"
+            downloadUrl={buildDownloadUrl(files.finalviva)}
           />
         </div>
       </div>
