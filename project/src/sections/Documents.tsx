@@ -108,7 +108,7 @@ export const Documents: React.FC = () => {
                     <span className="text-gray-500">({it})</span>
                   </div>
                   <a
-                    href={`/logs/${file}`}
+                    href={`/log/${file}`}
                     download
                     className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded text-sm font-medium whitespace-nowrap"
                   >
